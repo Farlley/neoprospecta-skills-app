@@ -15,4 +15,9 @@ export class CustomersService {
     return this.http.get<Customer[]>(`${environment.apiUrl}/customers`)
       .pipe();
   }
+
+  updateCustomer(data: Customer[]): Observable<Customer[]> {
+    return this.http.put<Customer[]>(`${environment.apiUrl}/customers`, data)
+      .pipe();
+  }
 }
