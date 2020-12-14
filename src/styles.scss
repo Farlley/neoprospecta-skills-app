@@ -1,1 +1,24 @@
 /* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:ital,wght@0,300;0,400;0,600&display=swap');
+
+body {
+    background: #f9f9f9;
+}
+
+button {
+    background: #f2f2f2;
+    border: none;
+    padding: 8px 14px;
+    font-family  : 'Source Sans Pro';
+    color: #333;
+    text-transform: uppercase;
+    cursor: pointer;
+    margin-right: 10px;
+    &:hover {
+        background: #eee;
+    }
+    &:disabled {
+        color: rgba(0, 0, 0, .4);
+        cursor: default;
+    }
+}
