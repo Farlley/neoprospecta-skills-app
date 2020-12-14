@@ -1,0 +1,25 @@
+<div *ngIf="customer; else loading">
+    <form [formGroup]="customerUpdateForm" (ngSubmit)="save()">
+        <label for="name">Nome</label>
+        <input type="text" id="name" formControlName="name">
+    
+        <label for="age">Idade</label>
+        <input type="text" id="age" formControlName="age">
+        <div role="alert" class="invalid-feedback" *ngIf="age?.invalid">
+            <div *ngIf="age?.errors?.pattern">
+                Idade inválida
+            </div>
+        </div>
+    
+        <label for="city">Cidade</label>
+        <input type="text" id="city" formControlName="city">
+    
+        <div>
+            <button (click)="goBack()" type="button">Cancelar</button>
+            <button [disabled]="!customerUpdateForm.valid">Salvar</button>
+        </div>
+    </form>    
+</div>
+<ng-template #loading>
+    Carregando Cliente...
+</ng-template>
