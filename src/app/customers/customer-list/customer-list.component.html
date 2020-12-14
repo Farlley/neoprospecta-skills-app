@@ -1,1 +1,32 @@
 <p>customers-list works!</p>
+<table>
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Nome</th>
+            <th>Idade</th>
+            <th>Cidade</th>
+            <th>Editar</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        <tr *ngFor="let customer of customers">
+            <td>
+                {{customer.id}}
+            </td>
+            <td>
+                {{customer.name}}
+            </td>
+            <td>
+                {{customer.age}}
+            </td>
+            <td>
+                {{customer.city}}
+            </td>
+            <td>
+                <button (click)="openCustomer(customer)">Editar</button>
+            </td>
+        </tr>
+    </tbody>
+</table>
