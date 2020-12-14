@@ -1,32 +1,35 @@
-<p>customers-list works!</p>
-<table>
-    <thead>
-        <tr>
-            <th>ID</th>
-            <th>Nome</th>
-            <th>Idade</th>
-            <th>Cidade</th>
-            <th>Editar</th>
-        </tr>
-    </thead>
+<div *ngIf="customers.length > 0; else loading">
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nome</th>
+                <th>Idade</th>
+                <th>Cidade</th>
+                <th>Editar</th>
+            </tr>
+        </thead>
+    
+        <tbody>
+            <tr *ngFor="let customer of customers">
+                <td>{{customer.id}}</td>
+                <td>{{customer.name}}</td>
+                <td>{{customer.age}}</td>
+                <td>{{customer.city}}</td>
+                <td><button (click)="openCustomer(customer)">Editar</button></td>
+            </tr>
+        </tbody>
+    </table>
+    
+    <div class="pagination">
+        <button (click)="previousPage()" [disabled]="pagination.isFirst">Anterior</button>
+        <button (click)="loadCustomers(i + 1)" *ngFor="let page of [].constructor(pagination.pages); let i = index" [ngClass]="{'active': pagination.current === (i + 1)}">
+            {{i + 1}}
+        </button>
+        <button (click)="nextPage()" [disabled]="pagination.isLast">Próximo</button>
+    </div>
+</div>
 
-    <tbody>
-        <tr *ngFor="let customer of customers">
-            <td>
-                {{customer.id}}
-            </td>
-            <td>
-                {{customer.name}}
-            </td>
-            <td>
-                {{customer.age}}
-            </td>
-            <td>
-                {{customer.city}}
-            </td>
-            <td>
-                <button (click)="openCustomer(customer)">Editar</button>
-            </td>
-        </tr>
-    </tbody>
-</table>
+<ng-template #loading>
+    Carregando Clientes...
+</ng-template>
