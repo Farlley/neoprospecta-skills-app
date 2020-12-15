@@ -15,6 +15,10 @@ table {
     border-collapse : collapse;
     margin-bottom   : 20px;
 
+    @media (max-width: 768px) {
+        display: none;
+    }
+
     thead {
         th {
             padding-top     : 24px;
@@ -46,16 +50,71 @@ table {
 
         button {
             padding: 5px 10px;
-            margin: 0;
+            margin : 0;
         }
     }
 
 }
 
+input.search {
+    height: 40px;
+    padding: 0 15px;
+    margin-bottom: 30px;
+    border: none;
+    border-bottom: 1px solid #eee;
+    font-size: 16px;
+    color: #333;
+    outline: none;
+    &:focus {
+        border-color: #6c7ae0;
+    }
+    &::placeholder {
+        font-style: italic;
+        color: #bbb;
+    }
+}
+
+.card-stack {
+    display  : flex;
+    flex-flow: row wrap;
+    margin   : 0 -15px;
+
+    @media (min-width: 768px) {
+        display: none;
+    }
+
+    .card {
+        display        : flex;
+        padding        : 15px;
+        flex           : 0 0 33.33%;
+        max-width      : 33.33%;
+        flex-direction : column;
+        min-width      : 0;
+        word-wrap      : break-word;
+        background-clip: border-box;
+        font-family    : 'Source Sans Pro';
+        cursor         : pointer;
+
+        &--title {
+            font-size       : 12px;
+            padding         : 0 20px;
+            color           : #fff;
+            line-height     : 1.4;
+            text-transform  : uppercase;
+            background-color: #6c7ae0;
+        }
+
+        &--body {
+            background: white;
+            padding   : 10px 20px;
+        }
+    }
+}
+
 .pagination {
     button {
         &.active {
-            background: #ddd;
+            background : #ddd;
             font-weight: bolder;
         }
     }

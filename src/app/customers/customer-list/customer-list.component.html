@@ -1,4 +1,6 @@
-<div *ngIf="customers.length > 0; else loading">
+<input type="text" [(ngModel)]="filter" #ctrl="ngModel" class="search" placeholder="Digite o ID, Nome, Idade ou Cidade" (ngModelChange)="filterCustomers($event)">
+
+<div *ngIf="customers; else loading">
     <table>
         <thead>
             <tr>
@@ -9,9 +11,8 @@
                 <th>Editar</th>
             </tr>
         </thead>
-    
         <tbody>
-            <tr *ngFor="let customer of customers">
+            <tr *ngFor="let customer of customers | slice: pagination.start : pagination.end">
                 <td>{{customer.id}}</td>
                 <td>{{customer.name}}</td>
                 <td>{{customer.age}}</td>
@@ -20,6 +21,18 @@
             </tr>
         </tbody>
     </table>
+
+    <div class="card-stack">
+        <div class="card" *ngFor="let customer of customers | slice: pagination.start : pagination.end" (click)="openCustomer(customer)">
+            <div class="card--title">
+                <h4>{{customer.id}} - {{customer.name}}</h4>
+            </div>
+            <div class="card--body">
+                <p><strong>Idade:</strong> {{customer.age}}</p>
+                <p><strong>Cidade:</strong> {{customer.city}}</p>
+            </div>
+        </div>
+    </div>
     
     <div class="pagination">
         <button (click)="previousPage()" [disabled]="pagination.isFirst">Anterior</button>
