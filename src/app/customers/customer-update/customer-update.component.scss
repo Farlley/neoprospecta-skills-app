@@ -62,7 +62,13 @@ form {
             color     : white;
 
             &:hover {
-                background: #6c7ae0;
+                &:not(:disabled) {
+                    background: darken(#6c7ae0, 5);
+                }
+            }
+
+            &:disabled {
+                opacity: .5;
             }
         }
     }
