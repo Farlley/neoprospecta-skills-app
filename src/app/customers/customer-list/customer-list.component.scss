@@ -62,7 +62,7 @@ input.search {
     margin-bottom: 30px;
     border: none;
     border-bottom: 1px solid #eee;
-    font-size: 16px;
+    font-size: 15px;
     color: #333;
     outline: none;
     &:focus {
@@ -107,15 +107,6 @@ input.search {
         &--body {
             background: white;
             padding   : 10px 20px;
-        }
-    }
-}
-
-.pagination {
-    button {
-        &.active {
-            background : #ddd;
-            font-weight: bolder;
         }
     }
 }

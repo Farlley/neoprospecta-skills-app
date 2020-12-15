@@ -1,0 +1,8 @@
+:host {
+    button {
+        &.active {
+            background : #ddd;
+            font-weight: bolder;
+        }
+    }
+}

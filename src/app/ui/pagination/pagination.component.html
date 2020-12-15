@@ -1,0 +1,7 @@
+<div class="pagination">
+    <button (click)="previousPage()" [disabled]="isFirst">Anterior</button>
+    <button (click)="setPage(i + 1)" [disabled]="isActive(i)" *ngFor="let page of [].constructor(pageLength); let i = index" [ngClass]="{'active': isActive(i)}">
+        {{i + 1}}
+    </button>
+    <button (click)="nextPage()" [disabled]="isLast">Próximo</button>
+</div>

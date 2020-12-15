@@ -3,6 +3,10 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Location } from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
 
+import {
+  MatSnackBar
+} from '@angular/material/snack-bar';
+
 import { Customer } from './../shared/customers.model';
 import { CustomersService } from './../shared/customers.service';
 
@@ -21,7 +25,8 @@ export class CustomerUpdateComponent implements OnInit {
     private fb: FormBuilder,
     private route: ActivatedRoute,
     private customersService: CustomersService,
-    private location: Location
+    private location: Location,
+    private _snackBar: MatSnackBar
   ) { }
 
   ngOnInit(): void {
@@ -57,7 +62,14 @@ export class CustomerUpdateComponent implements OnInit {
   save(): void {
     let data = this.customerUpdateForm.value;
     this.customersService.updateCustomer(this.id, data)
-      .subscribe(() => this.goBack());
+      .subscribe(() => {
+        this._snackBar.open(`Cliente ${data.name} atualizado com sucesso!`, '', {
+          duration: 5000,
+          horizontalPosition: 'start',
+          verticalPosition: 'bottom',
+        });
+        this.goBack()
+      });
   }
 
   get name() { return this.customerUpdateForm.get('name'); }

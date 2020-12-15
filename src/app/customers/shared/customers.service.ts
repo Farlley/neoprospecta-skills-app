@@ -27,4 +27,8 @@ export class CustomersService {
     return this.http.put<Customer>(`${environment.apiUrl}/customers/${id}`, data)
       .pipe();
   }
+
+  filterCustomers(data: Customer[], value: string):Customer[] {
+    return data.filter(x => Object.values(x).map(x => x.toString().toLowerCase()).find(x => x.includes(value.toLowerCase())))
+  }
 }
